@@ -190,6 +190,10 @@ export type Modal = {
           type: "report_success";
           user?: User;
       }
+    | {
+          type: "retrieve_role";
+          server?: Server;
+      }
 );
 
 export type ModalProps<T extends Modal["type"]> = Modal & { type: T } & {

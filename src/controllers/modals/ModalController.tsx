@@ -54,6 +54,7 @@ import UserPicker from "./components/UserPicker";
 import { OnboardingModal } from "./components/legacy/Onboarding";
 import { UserProfile } from "./components/legacy/UserProfile";
 import { Modal } from "./types";
+import RetrieveRole from "./components/RetrieveRole";
 
 type Components = Record<string, React.FC<any>>;
 
@@ -295,6 +296,7 @@ export const modalController = new ModalControllerExtended({
     user_profile: UserProfile,
     report: ReportContent,
     report_success: ReportSuccess,
+    retrieve_role: RetrieveRole,
     modify_displayname: ModifyDisplayname,
     changelog_usernames: ChangelogUsernames,
 });

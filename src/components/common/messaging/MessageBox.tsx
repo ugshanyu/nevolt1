@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { Channel } from "revolt.js";
 import styled, { css } from "styled-components/macro";
 import { ulid } from "ulid";
-
+import { Button } from 'antd';
 import { Text } from "preact-i18n";
 import { memo } from "preact/compat";
 import { useCallback, useEffect, useMemo, useState } from "preact/hooks";
@@ -79,6 +79,22 @@ const Base = styled.div`
         }
     }
 `;
+
+const StyledButton = styled(Button)`
+    width: 100%;
+    height: 49px;
+    color: var(--accent);
+    background-color: var(--secondary-background);
+    border-radius: 1px;
+    border-color: var(--accent);
+
+    &:hover {
+        background-color: [your-hover-background-color]; // Replace with your desired hover background color
+        color: [your-hover-color]; // Replace with your desired hover text color
+        // Add any other hover styles here
+    }
+`;
+
 
 const Blocked = styled.div`
     display: flex;
@@ -224,6 +240,7 @@ export default observer(({ channel }: Props) => {
     const [picker, setPicker] = useState(false);
     const client = useClient();
     const translate = useTranslation();
+    const server = client.servers.get(channel.server_id!);
 
     const closePicker = useCallback(() => setPicker(false), []);
 
@@ -259,20 +276,40 @@ export default observer(({ channel }: Props) => {
 
     if (!channel.havePermission("SendMessage")) {
         return (
-            <Base>
-                <Blocked>
-                    <Action>
+            <StyledButton 
+                    onClick={() => {
+                        modalController.push({
+                            type: "retrieve_role",
+                            server: server
+                        });
+                    }} 
+                >
+                    {/* <Action>
                         <PermissionTooltip
                             permission="SendMessages"
                             placement="top">
                             <ShieldX size={22} />
                         </PermissionTooltip>
-                    </Action>
+                    </Action> */}
                     <div className="text">
+                        <ShieldX size={22}/>
                         <Text id="app.main.channel.misc.no_sending" />
                     </div>
-                </Blocked>
-            </Base>
+                </StyledButton>
+            // <Base>
+            //     <Blocked>
+            //         <Action>
+            //             <PermissionTooltip
+            //                 permission="SendMessages"
+            //                 placement="top">
+            //                 <ShieldX size={22} />
+            //             </PermissionTooltip>
+            //         </Action>
+            //         <div className="text">
+            //             <Text id="app.main.channel.misc.no_sending" />
+            //         </div>
+            //     </Blocked>
+            // </Base>
         );
     }
 

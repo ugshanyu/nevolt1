@@ -1,0 +1,51 @@
+// Importing Ant Design styles if you're using a custom theme or need to override variables
+@import "~antd/lib/style/themes/default";
+@import "~antd/lib/input-number/style/index";
+
+// Global styles for InputNumber
+.ant-input-number {
+    width: 100%; // Full width
+    padding: 11px 16px; // Custom padding
+
+    font-size: 0.9375rem; // Custom font size
+    font-family: inherit; // Inherits font family from parent
+    font-weight: 500; // Medium font weight
+
+    border: none; // No border
+    border-radius: $border-radius-variable; // Custom border radius, ensure you have defined this variable
+    box-sizing: border-box; // Default box-sizing
+    outline: none; // No outline
+
+    transition: all 0.1s ease-in-out; // Smooth transition for all properties
+
+    // State: disabled
+    &:disabled {
+        filter: brightness(0.9); // Slightly dims the component
+    }
+
+    // State: focus-visible
+    &:focus-visible {
+        box-shadow: 0 0 0 1.5pt $accent-color-variable; // Custom focus box-shadow, ensure you have defined this variable
+    }
+
+    // Custom palette styles
+    &.primary {
+        color: $foreground-color-variable; // Foreground color, ensure you have defined this variable
+        background: $primary-background-variable; // Primary background, ensure you have defined this variable
+
+        &:hover {
+            background: $secondary-background-variable; // Change background on hover, ensure you have defined this variable
+        }
+    }
+
+    &.secondary {
+        color: $secondary-foreground-variable; // Secondary foreground, ensure you have defined this variable
+        background: $secondary-background-variable; // Secondary background, ensure you have defined this variable
+
+        &:hover {
+            background: $hover-background-variable; // Change background on hover, ensure you have defined this variable
+        }
+    }
+}
+
+// You can also add additional global styles or overrides here
