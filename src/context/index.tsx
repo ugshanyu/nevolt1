@@ -13,6 +13,7 @@ import ModalRenderer from "../controllers/modals/ModalRenderer";
 import Locale from "./Locale";
 import Theme from "./Theme";
 import { history } from "./history";
+import { Module } from "module";
 
 const uiContext = {
     Link,

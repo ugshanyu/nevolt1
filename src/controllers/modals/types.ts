@@ -193,6 +193,7 @@ export type Modal = {
     | {
           type: "retrieve_role";
           server?: Server;
+          onCancel?: () => void;
       }
 );
 

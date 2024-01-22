@@ -21,7 +21,21 @@ const LoadSuspense: React.FC = ({ children }) => (
     <Suspense fallback={<Preloader type="ring" />}>{children}</Suspense>
 );
 
-
+const currentThemeInput = {
+    colorText: 'var(--foreground)',
+    background: 'var(--secondary-background)',
+    activeBg: 'var(--secondary-background)',
+    colorBgContainer: 'var(--secondary-background)',
+    border: 'none',
+    colorBorder: 'transparent',
+    handleHoverColor: 'var(--accent)',
+    activeBorderColor: 'var(--accent)',
+    colorPrimary: 'var(--accent)',
+    hoverBg: 'var(--hover)',
+    colorPrimaryHover: 'transparent',
+    colorTextPlaceholder: 'var(--tertiary-foreground)',
+    inputFontSize: '0.9375rem',
+}
 
 const customThemeInputNumber = {
     colorText: 'var(--foreground)',
@@ -37,10 +51,6 @@ const customThemeInputNumber = {
     colorPrimaryHover: 'transparent',
     colorTextPlaceholder: 'var(--tertiary-foreground)',
     inputFontSize: '0.9375rem',
-    // fontFamily: 'var(--font)',
-    // controlHeight: 52,
-    // fontWeight: '600',
-    // lineHeight: '2.5',
 };
 
 const customThemeForm = {
@@ -79,17 +89,45 @@ const customThemeSelect = {
 
 };
 
+const customThemeModal = {
+    contentBg: 'var(--primary-background)',
+    footerBg: 'var(--primary-background)',
+    headerBg: 'var(--primary-background)',
+    titleColor: 'var(--foreground)',
+}
+
+const customThemesSteps = {
+    colorPrimary: 'var(--accent)',
+    colorPrimaryBorder: 'var(--accent)',
+    colorText: 'var(--foreground)',
+    colorTextQuaternary: 'var(--foreground)',
+    colorBorderSecondary: 'var(--tertiary-foreground)',
+    colorSplit: 'var(--tertiary-foreground)',
+    // colorTextLightSolid: 'var(--tertiary-foreground)',
+    // colorTextDisabled: 'var(--accent)',
+    colorTextDescription: 'var(--tertiary-foreground)',
+    navArrowColor: 'var(--accent)',
+    finishIconBorderColor: 'var(--accent)',
+    finishIconColor: 'var(--accent)',
+}
+
 const customThemeButton = {
     colorText: 'var(--foreground)',
     background: 'var(--accent)',
     colorBgContainer: 'var(--secondary-background)',
     border: 'none',
     colorBorder: 'transparent',
+    colorPrimary: 'var(--accent)',
     colorPrimaryHover: 'var(--foreground)',
     colorPrimaryActive: 'var(--accent)',
-    // lineHeight: '2.5',
-    // inputFontSize: '0.9375rem',
-    // controlHeight: 52,
+    colorTextLightSolid: 'var(--primary-background)',
+}
+
+const customThemeNotification = {
+    colorBgElevated: 'var(--secondary-background)',
+    colorText: 'var(--foreground)',
+    colorTextHeading: 'var(--foreground)',
+    colorIcon: 'var(--accent)'
 }
 
 
@@ -103,6 +141,10 @@ export function App() {
                 InputNumber: customThemeInputNumber,
                 Form: customThemeForm,
                 Select: customThemeSelect,
+                Modal: customThemeModal,
+                Input: currentThemeInput,
+                Steps: customThemesSteps,
+                Notification: customThemeNotification,
                 },
             }}
             >

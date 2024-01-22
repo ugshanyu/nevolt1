@@ -4,7 +4,8 @@ import { observer } from "mobx-react-lite";
 import { Channel } from "revolt.js";
 import styled, { css } from "styled-components/macro";
 import { ulid } from "ulid";
-import { Button } from 'antd';
+import { Button, Modal, Select } from 'antd';
+const { Option } = Select;
 import { Text } from "preact-i18n";
 import { memo } from "preact/compat";
 import { useCallback, useEffect, useMemo, useState } from "preact/hooks";
@@ -241,6 +242,8 @@ export default observer(({ channel }: Props) => {
     const client = useClient();
     const translate = useTranslation();
     const server = client.servers.get(channel.server_id!);
+    //showModals
+    const [showModals, setShowModals] = useState(true);
 
     const closePicker = useCallback(() => setPicker(false), []);
 
@@ -278,6 +281,7 @@ export default observer(({ channel }: Props) => {
         return (
             <StyledButton 
                     onClick={() => {
+                        // setShowModals(true);
                         modalController.push({
                             type: "retrieve_role",
                             server: server
@@ -606,6 +610,17 @@ export default observer(({ channel }: Props) => {
 
     return (
         <>
+            {/* <Modal
+                open={showModals}
+                title={<Text id="app.special.modals.report.reported" />}
+                // actions={...} // your actions code
+            >
+                <Select placeholder="Select a field type"  style={{ width: '100%' }}>
+                    <Option value="text" >Text</Option>
+                    <Option value="number">Number</Option>
+                </Select>
+                
+            </Modal> */}
             <AutoComplete {...autoCompleteProps} />
             <FilePreview
                 state={uploadState}
